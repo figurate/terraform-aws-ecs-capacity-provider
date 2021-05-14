@@ -22,3 +22,13 @@ variable "asg_max_size" {
   type        = number
   default     = 3
 }
+
+variable "on_demand_base_capacity" {
+  description = "Minimum number of on-demand instances used to fulfill desired capacity"
+  default     = 0
+}
+
+variable "on_demand_percentage_above_base_capacity" {
+  description = "Percentage of on-demand vs spot instances"
+  default     = 0
+}
