@@ -9,8 +9,11 @@ data "aws_vpc" "tenant" {
   tags    = var.vpc_tags
 }
 
-data "aws_subnet_ids" "tenant" {
-  vpc_id = data.aws_vpc.tenant.id
+data "aws_subnets" "tenant" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.tenant.id]
+  }
 }
 
 resource "aws_ecs_capacity_provider" "capacity_provider" {
@@ -27,7 +30,7 @@ resource "aws_ecs_capacity_provider" "capacity_provider" {
 
 resource "aws_autoscaling_group" "capacity_provider" {
   name_prefix         = "${var.name}-"
-  vpc_zone_identifier = data.aws_subnet_ids.tenant.ids
+  vpc_zone_identifier = data.aws_subnets.tenant.ids
   max_size            = var.asg_max_size
   min_size            = 0
   desired_capacity    = 0
