@@ -1,6 +1,9 @@
 /**
  * # ![AWS](aws-logo.png) ECS Capacity Provider
  *
+ * [![CI](https://github.com/figurate/terraform-aws-ecs-capacity-provider/actions/workflows/main.yml/badge.svg)](https://github.com/figurate/terraform-aws-ecs-capacity-provider/actions/workflows/main.yml)
+ *
+ *
  * Purpose: Blueprints for AWS ECS Capacity Providers.
  */
 
@@ -49,5 +52,11 @@ resource "aws_autoscaling_group" "capacity_provider" {
         version            = "$Latest"
       }
     }
+  }
+
+  tag {
+    key                 = "Name"
+    value               = var.name
+    propagate_at_launch = true
   }
 }

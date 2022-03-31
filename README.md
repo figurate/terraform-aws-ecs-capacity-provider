@@ -1,5 +1,7 @@
 # ![AWS](aws-logo.png) ECS Capacity Provider
 
+[![CI](https://github.com/figurate/terraform-aws-ecs-capacity-provider/actions/workflows/main.yml/badge.svg)](https://github.com/figurate/terraform-aws-ecs-capacity-provider/actions/workflows/main.yml)
+
 Purpose: Blueprints for AWS ECS Capacity Providers.
 
 ## Requirements
